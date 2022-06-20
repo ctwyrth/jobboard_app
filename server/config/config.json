@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "rootroot",
+    "database": "jobboard",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "rootroot",
+    "database": "jobboard",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "rootroot",
+    "database": "jobboard",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
