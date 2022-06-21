@@ -1,10 +1,11 @@
-import {Routes, Route, Link} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import JobBoard from './pages/JobBoard';
 import Apply from './pages/Apply';
 import Applied from './components/Applied';
 import JobAdd from './pages/JobAdd';
+import Applications from './pages/Applications';
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<JobBoard />} />
-        <Route path="/apply/:id" element={<Apply />} />
-        <Route path="/applied" element={<Applied />} />
-        <Route path="/addjob" element={<JobAdd />} />
+        <Route path="apply/:id" element={<Apply />} />
+        <Route path="applied/:id" element={<Applied />} />
+        <Route path="addjob" element={<JobAdd />} />
+        <Route path="applications" element={<Applications />} />
       </Routes>
     </>
   );

@@ -11,17 +11,16 @@ import ApplicationForm from '../components/ApplicationForm';
 
 function Apply() {
    const [ job, setJob ] = useState({});
-   const [ howLong, setHowLong ] = useState(");")
+   const [ howLong, setHowLong ] = useState("");
    const { id } = useParams();
 
    useEffect(() => {
       axios.get('http://localhost:3001/jobs/byId/' + id)
-      .then((response) => {
-         setJob(response.data);
-         const cDate = parseJSON(response.data.createdAt);
-         setHowLong(formatDistanceToNow(cDate, {addSuffix: true}));
+         .then((response) => {
+            setJob(response.data);
+            const cDate = parseJSON(response.data.createdAt);
+            setHowLong(formatDistanceToNow(cDate, {addSuffix: true}));
          })
-
          .catch((err) => {
             console.log(err)
          })

@@ -1,13 +1,12 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../App.css';
 
 function ApplicationForm(props) {
-   // const id = props;
-   console.log(props.id);
+   let navigate = useNavigate();
 
    const initialValues = {
       firstName: "",
@@ -24,18 +23,19 @@ function ApplicationForm(props) {
       firstName: Yup.string().required("This is a required field."),
       lastName: Yup.string().required("This is a required field."),
       email: Yup.string().email().required("This is a required field."),
-      phone: Yup.string().matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/, { message: "Please enter a valid U.S. phone number.", excludeEmptyString: true }).required("This is a required field."),
+      phone: Yup.string().matches(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/, { message: "Please enter a valid U.S. phone number.", excludeEmptyString: true }).required("This is a required field."),
       city: Yup.string().required("This is a required field."),
       state: Yup.string().min(4).max(20).required("This is a required field."),
       zipCode: Yup.number().integer("Please enter a valid 5 digit zip code.").required("This is a required field."),
    });
 
-   const onSubmit = (data) => {
+   const onSubmit = (data, {resetForm}) => {
       data["job_id"] = props.id;
       axios.post('http://localhost:3001/users', data)
          .then(() => {
             console.log("Application submitted");
-            <Navigate to="/applied" replace={true} />
+            resetForm();
+            navigate(`/applied/${props.id}`, { replace: true })
          })
          .catch((err) => {
             console.log(err);
@@ -85,3 +85,4 @@ export default ApplicationForm;
 
 // , { message: "This should be at lest 4 characters long." }
 // , { message: "This should be no more than 20 characters long." }
+// ^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$

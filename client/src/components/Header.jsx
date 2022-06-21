@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import { ReactComponent as Logo } from '../assets/img/dp-logo-colored.svg';
 
@@ -58,8 +58,10 @@ const Header = () => {
       <Box sx={{ flexGrow: 1 }}>
          <AppBar position="fixed">
             <Toolbar>
-               <Logo width="180" />
-               <Typography variant="h6" component="div" sx={{ ml: 1, flexGrow: 1 }}>JOB BOARD</Typography>
+               <Link to="/">
+                  <Logo width="180" />
+               </Link>
+                  <Typography variant="h6" component="div" sx={{ ml: 1, flexGrow: 1 }}>JOB BOARD</Typography>
                <Search>
                   <SearchIconWrapper>
                      <SearchIcon />
