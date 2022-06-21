@@ -14,6 +14,7 @@ app.use('/users', usersRouter);
 // Connect with db
 const db = require('./models');
 
+// Check for server
 db.sequelize.sync()
    .then(() => {
       app.listen(3001, () => { console.log("The eye of Sauron is upon you..."); });

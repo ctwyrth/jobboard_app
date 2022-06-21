@@ -24,10 +24,14 @@ module.exports = (sequelize, DataTypes) => {
          type: DataTypes.STRING(25),
          allowNull: false
       },
-      country: {
-         type: DataTypes.STRING,
+      zipCode: {
+         type: DataTypes.INTEGER(5),
          allowNull: false
       },
+      job_id: {
+         type: DataTypes.INTEGER,
+         allowNull: false
+      }
    }, {
       tableName: 'users'
    });

@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
-import SvgIcon from '@mui/material/SvgIcon';
 import { ReactComponent as Logo } from '../assets/img/dp-logo-colored.svg';
 
 
@@ -57,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Header = () => {
    return (
       <Box sx={{ flexGrow: 1 }}>
-         <AppBar position="static">
+         <AppBar position="fixed">
             <Toolbar>
                <Logo width="180" />
                <Typography variant="h6" component="div" sx={{ ml: 1, flexGrow: 1 }}>JOB BOARD</Typography>
@@ -67,9 +66,10 @@ const Header = () => {
                   </SearchIconWrapper>
                   <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
                </Search>
-               <Button color="inherit">Login</Button>
+               {/* <Button color="inherit">Login</Button> */}
             </Toolbar>
          </AppBar>
+         <Toolbar />
       </Box>
    )
 }
